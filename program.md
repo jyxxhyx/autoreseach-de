@@ -103,8 +103,8 @@ LOOP FOREVER:
 6. If the grep output is empty, the run crashed. Read `tail -n 30 run.log`
    to diagnose. If unfixable, log "crash" and move on.
 7. Record the results in the tsv.
-8. If best_fitness improved (lower), keep the commit (advance).
-9. If best_fitness is equal or worse, git reset back.
+8. If best_fitness improved (lower), keep the commit (advance) a nd go back to step 1.
+9. If best_fitness is equal or worse, git reset back and go back to step 1.
 
 **Timeout**: Each experiment should take ~5 minutes. If a run exceeds 10 minutes,
 kill it and treat it as a failure (discard and revert).
