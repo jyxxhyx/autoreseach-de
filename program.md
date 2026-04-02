@@ -1,7 +1,6 @@
 # DE Autoresearch
 
-This is an experiment to have the LLM autonomously optimize a Differential Evolution
-algorithm for the Shifted Rotated Rosenbrock problem (300D).
+This is an experiment to have the LLM autonomously optimize a Differential Evolution algorithm for the Shifted Rotated Rosenbrock problem (300D).
 
 ## Setup
 
@@ -14,24 +13,19 @@ To set up a new experiment, work with the user to:
    - `README.md` — repository context.
    - `prepare.py` — fixed problem definition, evaluation, constants. Do not modify.
    - `train.py` — the file you modify. Algorithm, hyperparameters, operators.
-4. **Verify the problem exists**: Check that `~/.cache/de_autoresearch/problem.pkl`
-   exists. If not, tell the human to run `python prepare.py`.
+4. **Verify the problem exists**: Check that `~/.cache/de_autoresearch/problem.pkl` exists. If not, tell the human to run `python prepare.py`.
 5. **Initialize results.tsv**: Create `results.tsv` with just the header row.
 6. **Confirm and go**: Confirm setup looks good, then kick off experimentation.
 
 ## Experimentation
 
-Each experiment runs on a single CPU core. The optimization runs for a
-**fixed time budget of 5 minutes** (wall clock optimization time, excluding startup).
+Each experiment runs on a single CPU core. The optimization runs for a **fixed time budget of 5 minutes** (wall clock optimization time, excluding startup).
 Launch it simply as:
 
 `python train.py`
 
 **What you CAN do:**
-- Modify `train.py` — this is the only file you edit. Everything is fair game:
-  mutation strategy (rand1, best1, or invent your own), crossover operator,
-  boundary handling, adaptive parameter control, population topology,
-  local search hybrids, F/CR/pop_size, etc.
+- Modify `train.py` — this is the only file you edit. Everything is fair game: mutation strategy (rand1, best1, or invent your own), crossover operator, boundary handling, adaptive parameter control, population topology, local search hybrids, F/CR/pop_size, etc.
 
 **What you CANNOT do:**
 - Modify `prepare.py`. It is read-only. It contains the fixed problem instance, evaluation function, dimension, bounds, and time budget.
@@ -100,11 +94,10 @@ LOOP FOREVER:
 3. git commit.
 4. Run the experiment: `python train.py > run.log 2>&1`
 5. Read out the results: `grep "^best_fitness:" run.log`
-6. If the grep output is empty, the run crashed. Read `tail -n 30 run.log`
-   to diagnose. If unfixable, log "crash" and move on.
+6. If the grep output is empty, the run crashed. Read `tail -n 30 run.log` to diagnose. If unfixable, log "crash" and move on.
 7. Record the results in the tsv.
-8. If best_fitness improved (lower), keep the commit (advance) a nd go back to step 1.
-9. If best_fitness is equal or worse, git reset back and go back to step 1.
+8. If best_fitness improved (lower), keep the commit (advance) a and go back to step 1.
+9. If best_fitness is equal or worse, git reset back and start the next loop.
 
 **Timeout**: Each experiment should take ~5 minutes. If a run exceeds 10 minutes,
 kill it and treat it as a failure (discard and revert).
