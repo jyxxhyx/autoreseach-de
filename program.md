@@ -1,7 +1,7 @@
 # DE Autoresearch
 
 This is an experiment to have the LLM autonomously optimize a Differential Evolution
-algorithm for the Shifted Rotated Rosenbrock problem (30D).
+algorithm for the Shifted Rotated Rosenbrock problem (300D).
 
 ## Setup
 
@@ -41,7 +41,7 @@ Launch it simply as:
 
 **The goal is simple: get the lowest best_fitness.**
 
-The problem is a 30-dimensional Shifted Rotated Rosenbrock function with a known
+The problem is a 300-dimensional Shifted Rotated Rosenbrock function with a known
 global optimum of 0.0. In practice, reaching below 1e+1 is strong, below 1e-2
 is excellent. Your target is to push best_fitness as close to 0 as possible
 within the 5-minute budget.
