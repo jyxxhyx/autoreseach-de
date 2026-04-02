@@ -1,0 +1,2 @@
+commit	best_fitness	time_seconds	status	description
+d6c612d	5.895629e+11	300.0	keep	baseline rand1 POP=500 F=0.8 CR=0.9
